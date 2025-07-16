@@ -15,8 +15,6 @@ We will be using [pystarport](https://github.com/crypto-org-chain/chain-main/tre
 
 ## Install with Nix
 
-
-
 ### Install nix
 
 Follow official instructions: https://nixos.org/download.html
@@ -33,32 +31,48 @@ $ cachix use crypto-com
 
 ### Install pystarport
 
-Install the binded version, which install chain-maind together, and find it by the absolute path:
-
-```
-$ nix-env -iA pystarport -f https://github.com/crypto-com/chain-main/archive/master.tar.gz
+```sh
+$ nix profile install github:crypto-com/pystarport
 ```
 
-Install the unbinded version of pystarport, which find whatever version of chain-maind it finds in `PATH`:
+The `pystarport` will be available at path `~/.nix-profile/bin/pystarport`
 
-```
-$ nix-env -iA pystarport-unbind -f https://github.com/crypto-com/chain-main/archive/master.tar.gz
+### Install chain-maind
+
+```sh
+$ nix profile install github:crypto-com/chain-main
 ```
 
-## Install pystarport manually
+The `chain-maind` will be available at path `~/.nix-profile/bin/chain-maind`
+
+## Install manually
 
 ### Pre-requisites
 
 - Python > 3.7.3
+- [pystarport](https://github.com/crypto-com/pystarport)
 - [chain-maind](https://github.com/crypto-org-chain/chain-main)
 
-To install pystarport manually, run:
+### Install pystarport
 
+```sh
+$ git clone https://github.com/crypto-com/pystarport.git
+$ cd pystarport
+$ pip install -e .
 ```
+The `pystarport` will be available `/usr/local/bin/pystarport`
+
+### Install chain-maind
+
+```sh
 $ git clone https://github.com/crypto-org-chain/chain-main.git
 $ cd chain-main
-$ pip3 install pystarport
+$ make install
 ```
+
+The `chain-maind` will be available at `$GOPATH/bin`
+
+### 
 
 ## Customize your devnet
 
